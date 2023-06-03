@@ -1,0 +1,15 @@
+.stc-loading {
+  position: absolute;
+  background: rgba(138, 134, 134, 0.3);
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 10;
+  .loading-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

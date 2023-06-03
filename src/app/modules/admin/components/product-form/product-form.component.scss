@@ -1,0 +1,11 @@
+.product-form__ {
+  display: flex;
+  flex-flow: column;
+  min-width: 320px;
+  .card-actions {
+    margin-top: 50px;
+    button {
+      margin: auto;
+    }
+  }
+}

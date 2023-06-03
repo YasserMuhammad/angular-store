@@ -1,0 +1,49 @@
+<!-- 
+    <mat-sidenav-container>
+        <mat-sidenav mode="side" opened class="sidenav">
+            <label id="category-radio-group-label">{{'select_category' | translate}}:</label>
+            <mat-radio-group aria-labelledby="category-radio-group-label" class="category-radio-group"
+                [(ngModel)]="selectedCategory" (ngModelChange)="selectCategory($event)">
+                <mat-radio-button value="">
+                    {{'all' | translate}}
+                </mat-radio-button>
+                <mat-radio-button *ngFor="let category of categories" [value]="category">
+                    {{category | translate}}
+                </mat-radio-button>
+            </mat-radio-group>
+
+            <label id="category-radio-group-label">{{'number_products' | translate}}:</label>
+            <mat-select [(ngModel)]="numberOfProducts" (ngModelChange)="selectLimit($event)">
+                <mat-option *ngFor="let numOfProduct of pageSizeOptions"
+                    [value]="numOfProduct">{{numOfProduct}}</mat-option>
+            </mat-select>
+        </mat-sidenav>
+        <mat-sidenav-content class="content">
+
+        </mat-sidenav-content>
+    </mat-sidenav-container> -->
+<div class="cards-list" fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div class="button-row">
+        <mat-form-field>
+            <mat-label>{{'select_category' | translate}}:</mat-label>
+            <mat-select [(ngModel)]="selectedCategory" (ngModelChange)="selectCategory($event)">
+                <mat-option value="">{{'all' | translate}}</mat-option>
+                <mat-option *ngFor="let category of categories" [value]="category">{{category | translate}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>{{'number_products' | translate}}:</mat-label>
+            <mat-select [(ngModel)]="numberOfProducts" (ngModelChange)="selectLimit($event)">
+                <mat-option *ngFor="let numOfProduct of pageSizeOptions"
+                    [value]="numOfProduct">{{numOfProduct}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="list">
+        <stc-product *ngFor="let product of productList" [id]="product.id" [title]="product.title"
+            [price]="product.price" [description]="product.description" [category]="product.category"
+            [image]="product.image">
+        </stc-product>
+    </div>
+</div>

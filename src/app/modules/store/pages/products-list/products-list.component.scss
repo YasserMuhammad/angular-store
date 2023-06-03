@@ -1,0 +1,17 @@
+.cards-list {
+  margin: 10px;
+  .button-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    height: 100px;
+  }
+  .list {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+}

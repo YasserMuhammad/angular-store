@@ -1,0 +1,64 @@
+<div class="product-form">
+    <mat-card class="product-card">
+        <mat-card-header>
+            <mat-card-title>{{(data?.id ? "update_product" : "add_product") | translate}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <form [formGroup]="productForm" class="product-form__"
+                (ngSubmit)="data?.id ?updateProduct(productForm): addProduct(productForm)">
+
+                <mat-form-field>
+                    <mat-label>{{"title" | translate}}:</mat-label>
+                    <input matInput type="text" formControlName="title">
+                    <mat-error *ngIf="productForm.controls['title'].errors?.['required']">{{"title_required" |
+                        translate}}</mat-error>
+                    <mat-error *ngIf="productForm.controls['title'].errors?.['minlength']">
+                        {{"title_minLength" | translate}}
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field floatLabel="always">
+                    <mat-label>{{"price" | translate}}:</mat-label>
+                    <input formControlName="price" matInput type="number" class="example-right-align" placeholder="0">
+                    <span matTextPrefix>$&nbsp;</span>
+                    <span matTextSuffix>.00</span>
+                    <mat-error *ngIf="productForm.controls['price'].errors?.['required']">{{"price_required" |
+                        translate}}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>{{"description" | translate}}:</mat-label>
+                    <textarea matInput placeholder="Enter Product Description..."
+                        formControlName="description"></textarea>
+                    <mat-error *ngIf="productForm.controls['description'].errors?.['required']">
+                        {{"description_required" | translate}}</mat-error>
+
+                </mat-form-field>
+                <mat-form-field>
+                    <label>{{'category'| translate}}: </label>
+                    <mat-select formControlName="category">
+                        <mat-option *ngFor="let category of categories" value="{{category}}">{{category |
+                            translate}}</mat-option>
+                    </mat-select>
+
+                    <mat-error *ngIf="productForm.controls['category'].errors?.['required']">
+                        {{"category_required" | translate}}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>{{"image" | translate}}:</mat-label>
+                    <input matInput type="url" formControlName="image">
+                    <mat-error *ngIf="productForm.controls['image'].errors?.['required']">{{"image_required" |
+                        translate}}</mat-error>
+                    <mat-error *ngIf="productForm.controls['image'].errors?.['pattern']">{{"invalid_url" |
+                        translate}}</mat-error>
+                </mat-form-field>
+                <mat-card-actions class="card-actions">
+                    <button mat-raised-button type="submit" [disabled]="!productForm.valid"
+                        color="primary">{{"submit_product" |
+                        translate}}</button>
+                </mat-card-actions>
+            </form>
+        </mat-card-content>
+
+    </mat-card>
+</div>

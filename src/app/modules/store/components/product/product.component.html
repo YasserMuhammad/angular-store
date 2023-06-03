@@ -1,0 +1,15 @@
+<mat-card class="product-card">
+    <mat-card-header>
+        <mat-card-subtitle *ngIf="category">{{category | translate}}</mat-card-subtitle>
+        <mat-card-title class="text-ellipsis product-title" *ngIf="title">{{title}}</mat-card-title>
+    </mat-card-header>
+    <img class="product-image" mat-card-image *ngIf="image" [src]="image">
+    <mat-card-content class="card-content">
+        <p class="product-description text-ellipsis">
+            {{description}}
+        </p>
+    </mat-card-content>
+    <mat-card-actions align="end">
+        <button mat-button (click)="openDialog()">Details--></button>
+    </mat-card-actions>
+</mat-card>

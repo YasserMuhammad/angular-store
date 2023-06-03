@@ -1,0 +1,41 @@
+<div class="login-form">
+    <mat-card class="login-card">
+        <mat-card-header>
+            <mat-card-title>{{"login" | translate}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <form [formGroup]="loginForm" class="example-form" (ngSubmit)="login(loginForm)">
+
+                <mat-form-field>
+                    <mat-label>{{"userName" | translate}}:</mat-label>
+                    <input matInput type="email" formControlName="username">
+                    <mat-error *ngIf="loginForm.controls['username'].errors?.['required']">{{"userName_required" |
+                        translate}}</mat-error>
+                    <mat-error *ngIf="loginForm.controls['username'].errors?.['minlength']">
+                        {{"userName_minLength" | translate}}
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>{{"password" | translate}}:</mat-label>
+                    <input matInput type="password" formControlName="password">
+                    <mat-error *ngIf="loginForm.controls['password'].errors?.['required']">
+                        {{"password_required" | translate}}</mat-error>
+
+                </mat-form-field>
+                <label>{{'user_type'| translate}}: </label>
+                <mat-radio-group formControlName="loginType">
+                    <mat-radio-button value="{{loginTypes.USER}}">{{'user' | translate}}</mat-radio-button>
+                    <mat-radio-button value="{{loginTypes.ADMIN}}">{{'admin' | translate}}</mat-radio-button>
+                </mat-radio-group>
+                <mat-error *ngIf="loginForm.controls['password'].errors?.['required']">
+                    {{"user_type_required" | translate}}</mat-error>
+                <mat-card-actions class="card-actions">
+                    <button mat-raised-button type="submit" [disabled]="!loginForm.valid" color="primary">{{"login" |
+                        translate}}</button>
+                </mat-card-actions>
+            </form>
+        </mat-card-content>
+
+    </mat-card>
+</div>

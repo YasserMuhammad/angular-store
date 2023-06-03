@@ -1,0 +1,25 @@
+<mat-card class="product-card" *ngIf="productObj">
+    <mat-card-header>
+        <mat-card-subtitle class="product-subtitle">{{productObj.category |
+            translate}}<mat-label>{{productObj.rating?.rate}}/5
+                <mat-icon>star</mat-icon></mat-label></mat-card-subtitle>
+        <mat-card-title class="text-ellipsis product-title">{{productObj.title}}</mat-card-title>
+        <!-- <mat-chip-listbox>
+            <mat-chip-option color="accent" selected>{{productObj?.rating.rate}}/5</mat-chip-option>
+        </mat-chip-listbox> -->
+
+
+    </mat-card-header>
+    <img class="product-image" mat-card-image [src]="productObj.image">
+    <mat-card-content class="card-content">
+        <p class="product-description">
+            {{productObj.description}}
+        </p>
+        <p class="product-price">
+            {{'price' | translate}}: {{productObj.price}}
+        </p>
+    </mat-card-content>
+    <div mat-dialog-actions align="end">
+        <button mat-button (click)="dialogRef.close();">Close</button>
+    </div>
+</mat-card>

@@ -1,0 +1,54 @@
+<div class="admin-product-list">
+    <div class="button-row">
+        <button (click)="addProduct()" mat-raised-button color="primary">{{"add_product" | translate}}</button>
+    </div>
+    <table mat-table [dataSource]="productList" class="mat-elevation-z8 demo-table" *ngIf="productList.length">
+        <!-- ID Column -->
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef>No.</th>
+            <td mat-cell *matCellDef="let product">{{product.id}}</td>
+        </ng-container>
+
+        <!-- Title Column -->
+        <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef>{{'title' | translate}}</th>
+            <td mat-cell *matCellDef="let product">{{product.title}}</td>
+        </ng-container>
+
+        <!-- Price Column -->
+        <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef>{{'price' | translate}}</th>
+            <td mat-cell *matCellDef="let product">{{product.price}}</td>
+        </ng-container>
+
+        <!-- Category Column -->
+        <ng-container matColumnDef="category">
+            <th mat-header-cell *matHeaderCellDef>{{'category' | translate}}</th>
+            <td mat-cell *matCellDef="let product">{{product.category | translate}}</td>
+        </ng-container>
+
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>{{'actions' | translate}}</th>
+            <td mat-cell *matCellDef="let product">
+                <button (click)="deleteProduct(product.id)" mat-icon-button class="example-icon"
+                    aria-label="Example icon-button with delete icon">
+                    <mat-icon color="warn">delete</mat-icon>
+                </button>
+
+                <button (click)="editProduct(product.id)" mat-icon-button class="example-icon"
+                    aria-label="Example icon-button with edit_square icon">
+                    <mat-icon color="primary">edit_square</mat-icon>
+                </button>
+
+
+            </td>
+
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator (page)="selectLimit($event)" [length]="20" [pageSizeOptions]="pageSizeOptions"
+        aria-label="Select page of Products"></mat-paginator>
+</div>
